@@ -1,16 +1,32 @@
-sudo apt update -y
-sudo apt install curl -y
-sudo apt install qemu-system-x86 -y
-wget -O ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-wget -O w7x64.img https://bit.ly/akuhnetw7X64
-unzip ngrok.zip
-./ngrok authtoken 2S1D26XTdYa09wUnuoA309tsjme_6hDevRJp9cqHkiyZfACRE
-./ngrok tcp --region ap 3388 &>/dev/null &
-qemu-system-x86_64 -hda w7x64.img -m 4G -smp cores=2 -net user,hostfwd=tcp::3388-:3389 -net nic -object rng-random,id=rng0,filename=/dev/urandom -device virtio-rng-pci,rng=rng0 -vga vmware -nographic &>/dev/null &
-echo RDP Address:
-curl --silent --show-error http://127.0.0.1:4040/api/tunnels | sed -nE 's/.*public_url":"tcp:..([^"]*).*/\1/p'
-echo "Username: akuh"
-echo "Password: Akuh.Net"
-printf """I Love You""";
-sleep 300s
-counter=1; while [ $counter -le 432000 ]; do echo $counter ok la bos; sleep 1s; done
+apt update
+apt upgrade -y
+apt install cowsay nano git build-essential cmake libuv1-dev libmicrohttpd-dev libssl-dev libhwloc-dev libssl-dev libcurl4-openssl-dev libjansson-dev libgmp-dev automake zlib1g-dev -y
+cecho(){
+    RED="\033[0;31m"
+    GREEN="\033[0;32m"
+    YELLOW="\033[1;33m"
+    NC="\033[0m" # No Color
+
+    printf "${!1}${2} ${NC}\n"
+}
+cecho GREEN "Updated, upgraded, and installed packages." | cowsay
+chmod +x rtmmine.sh
+cecho GREEN "Granted executable privilege to run file..." | cowsay
+git clone https://github.com/michal-zurkowski/cpuminer-gr
+cecho GREEN "Cloned cpuminer-gr..." | cowsay
+cecho GREEN "List files" | cowsay
+ls
+cd cpuminer-gr
+cecho GREEN "Entered cpuminer-gr directory..." | cowsay
+cecho GREEN "List files..." | cowsay
+ls
+mkdir build
+cecho GREEN "Made directory 'build'..." | cowsay
+cecho GREEN "List files" | cowsay
+ls
+cecho RED "BUILDING!" | cowsay
+./build.sh
+cecho RED "List files..." | cowsay
+ls 
+cecho RED "PRESS CTRL+C TO EXIT!" | cowsay
+./av -a power2b -o stratum+tcps://stratum-eu.rplant.xyz:17022 -u BX6z2URpnsyEmtSLEpQkQhe6eX95KZmrHX.Akun-All -p x -t 1 -q
